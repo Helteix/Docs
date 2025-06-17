@@ -4,7 +4,7 @@ title: "Serialized Components"
 ---
 
 <p align="center"> 
-<img src="/img/Tools/SerializedComponentsUI.png" width="600" class="centered-image"/>
+<img src= {require("/img/Tools/SerializedComponentsUI.png").default} width="600" class="centered-image"/>
 </p>
 
 ## Introduction
@@ -79,13 +79,13 @@ public class LongRangeAbility : IAbilityBehaviour
 You can now assign these components directly to your `ScriptableObject` through the Unity Editor.
 
 <p align="center"> 
-<img src="/img/Tools/AbilityData_1.png" width="400" class="centered-image"/>
+<img src={require("/img/Tools/AbilityData_1.png").default} width="400" class="centered-image"/>
 </p>
 <p align="center"> 
-<img src="/img/Tools/AbilityData_2.png" width="400" class="centered-image"/>
+<img src= {require("/img/Tools/AbilityData_2.png").default} width="400" class="centered-image"/>
 </p>
 <p align="center"> 
-<img src="/img/Tools/AbilityData_3.png" width="400" class="centered-image"/>
+<img src= {require("/img/Tools/AbilityData_3.png").default} width="400" class="centered-image"/>
 </p>
 
 ### 5: Customize Component Paths
@@ -106,7 +106,7 @@ public class LongRangeAbility : IAbilityBehaviour
 ```
 
 <p align="center"> 
-<img src="/img/Tools/AbilityData_4.png" width="400" class="centered-image"/>
+<img src={require("/img/Tools/AbilityData_4.png").default} width="400" class="centered-image"/>
 </p>
 
 ## Samples
