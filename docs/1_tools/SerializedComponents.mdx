@@ -3,18 +3,18 @@ sidebar_position: 1
 title: "Serialized Components"
 ---
 
-<p align="center"> 
+<p align="center">
 <img src= {require("/img/Tools/SerializedComponentsUI.png").default} width="600" class="centered-image"/>
 </p>
 
 ## Introduction
-Serialized Components provide developers with a way to attach behavior to virtually anything—yes, even `ScriptableObjects`—by enabling the serialization of interfaces.  
+Serialized Components provide developers with a way to attach behavior to virtually anything—yes, even `ScriptableObjects`—by enabling the serialization of interfaces.
 The system is conceptually similar to Unity’s built-in `MonoBehaviour` pattern, but adapted for broader use cases.
 
 ## Tutorial
 The most common use case arises when you want to attach custom logic to a `ScriptableObject`.
 
-For example:  
+For example:
 You’re building an ability system where each ability is a `ScriptableObject`, and you want the behavior of each ability to be contained *within* that asset—without relying on prefabs or scene-based logic.
 
 ### 1: Define the Interface
@@ -28,7 +28,7 @@ public interface IAbilityBehaviour : ISComponent
 ```
 
 ### 2: Create the Container
-Next, define your `ScriptableObject` and add a field of type `SComponentContainer<IAbilityBehaviour>`.  
+Next, define your `ScriptableObject` and add a field of type `SComponentContainer<IAbilityBehaviour>`.
 You’ll then be able to access and invoke logic defined in the serialized component.
 
 ```csharp
@@ -53,7 +53,7 @@ Now, create the actual component implementations.
 public class ShortRangeAbility : IAbilityBehaviour
 {
     [SerializeField] private float damage;
-    
+
     public void Attack()
     {
         Debug.Log($"Dealing {damage} damage at short range");
@@ -67,7 +67,7 @@ public class LongRangeAbility : IAbilityBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float range;
-    
+
     public void Attack()
     {
         Debug.Log($"Dealing {damage} damage at {range} range");
@@ -78,13 +78,13 @@ public class LongRangeAbility : IAbilityBehaviour
 ### 4: Assign Components
 You can now assign these components directly to your `ScriptableObject` through the Unity Editor.
 
-<p align="center"> 
+<p align="center">
 <img src={require("/img/Tools/AbilityData_1.png").default} width="400" class="centered-image"/>
 </p>
-<p align="center"> 
+<p align="center">
 <img src= {require("/img/Tools/AbilityData_2.png").default} width="400" class="centered-image"/>
 </p>
-<p align="center"> 
+<p align="center">
 <img src= {require("/img/Tools/AbilityData_3.png").default} width="400" class="centered-image"/>
 </p>
 
@@ -105,7 +105,7 @@ public class LongRangeAbility : IAbilityBehaviour
 }
 ```
 
-<p align="center"> 
+<p align="center">
 <img src={require("/img/Tools/AbilityData_4.png").default} width="400" class="centered-image"/>
 </p>
 
