@@ -7,7 +7,7 @@ slug: /
 # 🎮 Welcome to the **Helteix** Library!
 
 For years, I’ve been working with Unity and building custom tools to streamline my development workflow.  
-**Helteix (LTX)** is a collection of carefully crafted packages designed to enhance your Unity projects, based on four key principles:
+**Helteix** is a collection of carefully crafted packages designed to enhance your Unity projects, based on four key principles:
 
 ---
 
@@ -19,7 +19,7 @@ Every line of code is optimized to deliver the best possible performance. 🏎�
 ---
 
 ### 🧩 2. **Flexibility**
-LTX isn’t about dropping a black-box solution into your project.  
+Helteix isn’t about dropping a black-box solution into your project.  
 Instead, it offers **robust and scalable APIs** that integrate seamlessly with your architecture.  
 All systems are designed to **adapt** rather than **impose** — using **interfaces** or **inheritance**, you stay in control. 🔧
 
@@ -37,4 +37,4 @@ Every system includes **custom editor extensions**, making it easier for non-dev
 
 ---
 
-📘 Dive into the docs and start exploring what **LTX** can bring to your Unity development workflow!
+📘 Dive into the docs and start exploring what **Helteix** can bring to your Unity development workflow!

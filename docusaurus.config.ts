@@ -42,6 +42,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+
             routeBasePath: '/',
             sidebarPath: require.resolve('./sidebars.ts'),
         },
@@ -54,9 +55,8 @@ const config: Config = {
   ],
   themeConfig: {
     prism: {
-      theme: prismThemes.vsDark, // ← Essaye ce thème ou un autre
-      // darkTheme: prismThemes.dracula, // Optionnel si tu veux un thème séparé pour dark mode
-      additionalLanguages: ['csharp'], // Assure-toi que C# est bien chargé
+        theme: prismThemes.vsDark, // ← Essaye ce thème ou un autre
+        additionalLanguages: ['csharp'],
     },
   }
 };

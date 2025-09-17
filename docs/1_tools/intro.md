@@ -8,7 +8,7 @@ This page shows you how to install the package.
 ## Contents
 
 ## Introduction
-Since the package **com.ltx.tools** is free, you can either install the package from my [GitHub page](https://github.com/Helteix/Tools) or from the Unity Asset store.
+Since the package **com.helteix.tools** is free, you can either install the package from my [GitHub page](https://github.com/Helteix/Tools) or from the Unity Asset store.
 
 :::info[Which should I choose?]
 It is recommended to stick with Asset Store's version for more stability.
