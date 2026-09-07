@@ -4,47 +4,51 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+// One independently-versioned docs instance per Helteix package.
+const packageDocs = [
+  {id: 'tools', label: 'Tools'},
+  {id: 'singletons', label: 'Singletons'},
+  {id: 'channeled-properties', label: 'Channeled Properties'},
+  {id: 'graphs', label: 'Graphs'},
+  {id: 'cards', label: 'Cards'},
+];
 
 const config: Config = {
   title: 'Helteix',
   favicon: 'img/LTXIcon.png',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
   url: 'https://helteix.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/Docs/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Helteix', // Usually your GitHub org/user name.
-  projectName: 'Docs', // Usually your repo name.
-  deploymentBranch : 'gh-pages',
+  organizationName: 'Helteix',
+  projectName: 'Docs',
+  deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  // Tracks which package the visitor is browsing so the navbar can show only
+  // that package's version selector.
+  clientModules: [require.resolve('./src/currentPackage.js')],
+
   presets: [
     [
       'classic',
       {
+        // Default docs instance: the landing / "All Packages" overview.
         docs: {
-
-            routeBasePath: '/',
-            sidebarPath: require.resolve('./sidebars.ts'),
+          routeBasePath: '/',
+          sidebarPath: require.resolve('./sidebars.ts'),
         },
         blog: false,
         theme: {
@@ -53,12 +57,51 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-  themeConfig: {
-    prism: {
-        theme: prismThemes.vsDark, // ← Essaye ce thème ou un autre
-        additionalLanguages: ['csharp'],
+
+  // One docs plugin instance per package, each with its own versioning.
+  plugins: packageDocs.map((pkg) => [
+    '@docusaurus/plugin-content-docs',
+    {
+      id: pkg.id,
+      path: pkg.id,
+      routeBasePath: pkg.id,
+      sidebarPath: require.resolve('./sidebars.ts'),
+      // Only released (versioned) docs are shown. The live `<package>/` folder is
+      // the working copy for the next version; run `docs:version:<id> <ver>` to freeze it.
+      includeCurrentVersion: false,
     },
-  }
+  ]),
+
+  themeConfig: {
+    navbar: {
+      title: 'Helteix',
+      items: [
+        {
+          type: 'dropdown',
+          label: 'Packages',
+          position: 'left',
+          items: packageDocs.map((pkg) => ({
+            type: 'doc',
+            docId: 'intro',
+            docsPluginId: pkg.id,
+            label: pkg.label,
+          })),
+        },
+        // Per-package version selectors. CSS (custom.css) shows only the one
+        // matching the package currently being browsed.
+        ...packageDocs.map((pkg) => ({
+          type: 'docsVersionDropdown' as const,
+          docsPluginId: pkg.id,
+          position: 'right' as const,
+          className: `nav-ver nav-ver--${pkg.id}`,
+        })),
+      ],
+    },
+    prism: {
+      theme: prismThemes.vsDark,
+      additionalLanguages: ['csharp'],
+    },
+  } satisfies Preset.ThemeConfig,
 };
 
 export default config;

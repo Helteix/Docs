@@ -16,4 +16,4 @@ The core type is `TypeRef`, a serializable struct. Under the hood, a `TypeRef` s
 - You need to serialize a type reference that must survive refactors.
 - You want to instantiate objects dynamically from a type chosen in the editor.
 
-The [Singletons](../../2_singletons/4_settings.md) package uses Type Mapping internally so its prefab references keep working even when you rename your singleton classes.
+The **Singletons** package uses Type Mapping internally so its prefab references keep working even when you rename your singleton classes.

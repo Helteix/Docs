@@ -1,0 +1,9 @@
+{
+  "label": "GameSettings",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "How to use the GameSettings of com.helteix.tools"
+
+  }
+}

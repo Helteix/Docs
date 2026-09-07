@@ -38,3 +38,15 @@
   border-width: 2px;
   border-style: solid;
 }
+/* Per-package version selector: only show the version dropdown of the package
+   the visitor is currently browsing (data-pkg is set by src/currentPackage.js). */
+.nav-ver {
+  display: none !important;
+}
+html[data-pkg='tools'] .nav-ver--tools,
+html[data-pkg='singletons'] .nav-ver--singletons,
+html[data-pkg='channeled-properties'] .nav-ver--channeled-properties,
+html[data-pkg='graphs'] .nav-ver--graphs,
+html[data-pkg='cards'] .nav-ver--cards {
+  display: inline-flex !important;
+}
