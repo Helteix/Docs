@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkltx_docs=self.webpackChunkltx_docs||[]).push([[479],{5616:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"singletons"}')}}]);
