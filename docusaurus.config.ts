@@ -73,20 +73,13 @@ const config: Config = {
   ]),
 
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+      respectPrefersColorScheme: false,
+    },
     navbar: {
       title: 'Helteix',
       items: [
-        {
-          type: 'dropdown',
-          label: 'Packages',
-          position: 'left',
-          items: packageDocs.map((pkg) => ({
-            type: 'doc',
-            docId: 'intro',
-            docsPluginId: pkg.id,
-            label: pkg.label,
-          })),
-        },
         // Per-package version selectors. CSS (custom.css) shows only the one
         // matching the package currently being browsed.
         ...packageDocs.map((pkg) => ({

@@ -50,3 +50,10 @@ html[data-pkg='graphs'] .nav-ver--graphs,
 html[data-pkg='cards'] .nav-ver--cards {
   display: inline-flex !important;
 }
+
+/* Separator between the global package list and the current package's pages. */
+.sidebar-separator {
+  margin: 0.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
