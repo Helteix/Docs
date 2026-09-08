@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 title: "Classic Singleton"
 ---
 
@@ -48,40 +48,11 @@ By default, the classic `Singleton<T>` uses a finder that never finds an existin
 :::
 
 ## Customizing creation and lookup
-`Singleton<T>` is built on top of two interfaces, so you can fully control how an instance is created and how an existing one is found.
-
-- `ISingletonFactory<T>` — defines `T CreateSingleton()`.
-- `ISingletonFinder<T>` — defines `bool TryFindExistingInstance(out T instance)`.
-
-You can supply your own implementations through the extended generic signatures:
+How a singleton is created (its **factory**) and how an existing one is found (its **finder**) are both fully customizable through the extended generic signatures:
 
 ```csharp
-// Custom factory only
-public class GameManager : Singleton<GameManager, MyFactory> { }
-
-// Custom factory and finder
-public class GameManager : Singleton<GameManager, MyFactory, MyFinder> { }
+public class GameManager : Singleton<GameManager, MyFactory> { }            // custom factory
+public class GameManager : Singleton<GameManager, MyFactory, MyFinder> { }  // custom factory + finder
 ```
 
-For example, a factory that pre-fills some data:
-
-```csharp
-public class GameManagerFactory : ISingletonFactory<GameManager>
-{
-    public GameManager CreateSingleton()
-    {
-        var manager = new GameManager();
-        manager.Score = 100; // starting score
-        return manager;
-    }
-}
-
-public class GameManager : Singleton<GameManager, GameManagerFactory>
-{
-    public int Score { get; set; }
-}
-```
-
-:::tip
-This factory/finder pattern is the same foundation used by `MonoSingleton` and `SceneService`. Understanding it here makes the other two patterns easier to grasp.
-:::
+This is an advanced mechanism shared by **every** singleton pattern (classic, Mono and Scene). See [Factories & Finders](./factories-and-finders.md) for the full explanation and examples.

@@ -1,12 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: "Scene Services"
 ---
 
 ## Introduction
 Sometimes you don't want a global singleton — you want **one unique instance per scene**, or simply to access an object that already lives in a loaded scene. That's what a **Scene Service** is for.
 
-Unlike a `MonoSingleton`, a `SceneService` is not moved to `DontDestroyOnLoad`: it belongs to its scene. This makes it ideal for additive scene setups where each scene has its own manager, camera rig, spawn system, etc.
+A `SceneService` is **never** moved to `DontDestroyOnLoad` — it belongs to its scene and lives and dies with it. This makes it ideal for additive scene setups where each scene has its own manager, camera rig, spawn system, etc.
 
 Inherit from `SceneService<T>`:
 

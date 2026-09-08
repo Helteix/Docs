@@ -6,11 +6,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // One independently-versioned docs instance per Helteix package.
 const packageDocs = [
-  {id: 'tools', label: 'Tools'},
-  {id: 'singletons', label: 'Singletons'},
-  {id: 'channeled-properties', label: 'Channeled Properties'},
-  {id: 'graphs', label: 'Graphs'},
-  {id: 'cards', label: 'Cards'},
+  {id: 'tools', label: 'Tools', version: '1.7.0'},
+  {id: 'singletons', label: 'Singletons', version: '1.4.0'},
+  {id: 'channeled-properties', label: 'Channeled Properties', version: '2.1.0'},
+  {id: 'graphs', label: 'Graphs', version: '1.2.0'},
+  {id: 'cards', label: 'Cards', version: '0.3.0'},
 ];
 
 const config: Config = {
@@ -36,6 +36,12 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  // Enables ```mermaid diagrams in the docs.
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 
   // Tracks which package the visitor is browsing so the navbar can show only
   // that package's version selector.
@@ -66,9 +72,11 @@ const config: Config = {
       path: pkg.id,
       routeBasePath: pkg.id,
       sidebarPath: require.resolve('./sidebars.ts'),
-      // Only released (versioned) docs are shown. The live `<package>/` folder is
-      // the working copy for the next version; run `docs:version:<id> <ver>` to freeze it.
-      includeCurrentVersion: false,
+      // The live `<package>/` folder is the current (served) version, labelled with the
+      // package's version. Freeze it on release: `docs:version:<id> <newVersion>`.
+      versions: {
+        current: {label: pkg.version, badge: true},
+      },
     },
   ]),
 

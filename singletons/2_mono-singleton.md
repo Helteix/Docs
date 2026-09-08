@@ -1,9 +1,14 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: "Mono Singleton"
 ---
 
 ## Introduction
+
+:::tip[The go-to pattern]
+Mono Singletons are the **most commonly used** Helteix singletons. If you're not sure which pattern you need, start here.
+:::
+
 A **MonoSingleton** is a `MonoBehaviour` singleton meant to be **instantiated at runtime**. You never place it in a scene by hand — the system creates the `GameObject` for you the first time it is needed.
 
 Inherit from `MonoSingleton<T>`:
@@ -53,7 +58,7 @@ public class AudioManager : MonoSingleton<AudioManager> { }
 ```
 
 ### `[DontDestroyOnLoad]`
-Moves the singleton's `GameObject` to the `DontDestroyOnLoad` scene so it survives scene changes.
+By **default, a MonoSingleton is not persistent**: it lives in the scene where it was created and is destroyed on the next scene load, like any other `GameObject`. Add `[DontDestroyOnLoad]` to move it to the `DontDestroyOnLoad` scene so it **survives scene changes**.
 
 ```csharp
 [DontDestroyOnLoad]

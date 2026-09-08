@@ -1,0 +1,8 @@
+{
+  "label": "Phases",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "The Phases system: model the steps and states of your game as cancellable, awaitable, observable async units."
+  }
+}
