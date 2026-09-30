@@ -19,21 +19,6 @@ Two roles, deliberately decoupled:
 - The **phase** knows *what to do* (its `Execute` body) and nothing about who is watching.
 - The **listeners** know *how to react* when a phase begins or ends, and nothing about the phase's internals.
 
-```mermaid
-sequenceDiagram
-    participant Caller
-    participant PhaseManager
-    participant Phase
-    participant Listeners
-    Caller->>PhaseManager: Run(phase) / await phase
-    PhaseManager->>Phase: Initialize()
-    PhaseManager->>Listeners: OnPhaseBegin(phase)
-    PhaseManager->>Phase: Execute(token)
-    Phase-->>PhaseManager: result (Success / Cancel / Failure)
-    PhaseManager->>Listeners: OnPhaseEnd(phase)
-    PhaseManager->>Phase: Dispose()
-    PhaseManager-->>Caller: PhaseResult<T>
-```
 
 This is why a UI, an analytics logger, and a sound manager can all react to your `TurnPhase` without any of them referencing each other.
 

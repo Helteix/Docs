@@ -37,12 +37,6 @@ const config: Config = {
     locales: ['en'],
   },
 
-  // Enables ```mermaid diagrams in the docs.
-  markdown: {
-    mermaid: true,
-  },
-  themes: ['@docusaurus/theme-mermaid'],
-
   // Tracks which package the visitor is browsing so the navbar can show only
   // that package's version selector.
   clientModules: [require.resolve('./src/currentPackage.js')],
@@ -88,6 +82,15 @@ const config: Config = {
     navbar: {
       title: 'Helteix',
       items: [
+        // Package tabs in the top bar. Each links to its package's docs and is
+        // highlighted while browsing that package.
+        ...packageDocs.map((pkg) => ({
+          type: 'doc' as const,
+          docId: 'intro',
+          docsPluginId: pkg.id,
+          label: pkg.label,
+          position: 'left' as const,
+        })),
         // Per-package version selectors. CSS (custom.css) shows only the one
         // matching the package currently being browsed.
         ...packageDocs.map((pkg) => ({
